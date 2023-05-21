@@ -1,5 +1,4 @@
 # flake8: noqa
-import argparse
 import dataclasses
 import os
 import pandas as pd
@@ -11,11 +10,10 @@ import buildflow
 from buildflow import Flow
 from imageai.Classification import ImageClassification
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--gcp_project", type=str, required=True)
-parser.add_argument("--bucket_name", type=str, required=True)
-parser.add_argument("--table_name", type=str, default="image_classification")
-args, _ = parser.parse_known_args(sys.argv)
+# TODO(developer): fill these in.
+GCP_PROJECT = 'TODO'
+BUCKET_NAME = 'TODO'
+
 
 @dataclasses.dataclass
 class Classification:
@@ -36,13 +34,13 @@ flow = Flow()
 class ImageClassificationProcessor(buildflow.Processor):
 
     def source(self):
-        return buildflow.GCSFileNotifications(project_id=args.gcp_project,
-                                              bucket_name=args.bucket_name)
+        return buildflow.GCSFileNotifications(project_id=GCP_PROJECT,
+                                              bucket_name=BUCKET_NAME)
 
     def sink(self):
         return buildflow.BigQuerySink(
             table_id=
-            f"{args.gcp_project}.launchflow_walkthrough.{args.table_name}")
+            f"{args.gcp_project}.launchflow_walkthrough.image_classification")
 
     def setup(self):
         self.execution_path = os.path.dirname(os.path.realpath(__file__))
