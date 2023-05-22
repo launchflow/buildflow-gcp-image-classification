@@ -40,7 +40,7 @@ class ImageClassificationProcessor(buildflow.Processor):
     def sink(self):
         return buildflow.BigQuerySink(
             table_id=
-            f"{args.gcp_project}.launchflow_walkthrough.image_classification")
+            f"{GCP_PROJECT}.launchflow_walkthrough.image_classification")
 
     def setup(self):
         self.execution_path = os.path.dirname(os.path.realpath(__file__))
