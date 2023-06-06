@@ -1,4 +1,4 @@
-# Walkthrough of using LaunchFlow
+# Walkthrough of using BuildFlow with GCS File Events 
 
 Install deps:
 
