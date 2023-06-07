@@ -10,8 +10,8 @@ from buildflow import Node
 from imageai.Classification import ImageClassification
 
 # TODO(developer): fill these in.
-GCP_PROJECT = "daring-runway-374503"
-BUCKET_NAME = "caleb-image-classification"
+GCP_PROJECT = "TODO"
+BUCKET_NAME = "TODO"
 
 
 @dataclasses.dataclass
