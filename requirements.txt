@@ -1,4 +1,4 @@
-buildflow @ git+https://github.com/launchflow/buildflow@main
+buildflow
 cython
 imageai
 launchflow

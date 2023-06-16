@@ -10,8 +10,8 @@ from buildflow import Node
 from imageai.Classification import ImageClassification
 
 # TODO(developer): fill these in.
-GCP_PROJECT = "buildflow-integration-tests"
-BUCKET_NAME = "caleb-metrics-testing"
+GCP_PROJECT = "TODO"
+BUCKET_NAME = "TODO"
 
 
 @dataclasses.dataclass
@@ -33,15 +33,13 @@ app = Node()
 class ImageClassificationProcessor(buildflow.Processor):
     def source(self):
         return buildflow.io.GCSFileStream(
-            project_id=GCP_PROJECT,
-            bucket_name=BUCKET_NAME,
-            force_destroy=True,
+            project_id=GCP_PROJECT, bucket_name=BUCKET_NAME, force_destroy=True,
         )
 
     def sink(self):
         return buildflow.io.BigQueryTable(
             table_id=f"{GCP_PROJECT}.launchflow_walkthrough.image_classification",
-            destroy_protection=False,
+            destroy_protection=False
         )
 
     def setup(self):
